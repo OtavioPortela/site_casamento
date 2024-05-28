@@ -5,8 +5,6 @@ body {
 }
 
 .banner-fundo {
-    width: 100%; /* Ajusta para largura total */
-    height: 600px; /* Altura desejada */
     background-image: url('../img/banner.jpg');
     background-position: center center;
     background-size: cover;
@@ -15,6 +13,21 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    min-height: 400px; /* Altura mínima */
+}
+
+header h2{
+    font-size: 150px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-family: 'Great Vibes', cursive;
+    display: flex;
+    justify-content: center;
+}
+
+header p{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
 }
 
 .color {
@@ -22,10 +35,13 @@ body {
 }
 
 .nosso-casamento {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
     height: 100px;
     display: flex;
     justify-content: center;
     padding: 2rem;
+    color: #000;
 }
 
 .info {
@@ -34,6 +50,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 2rem;
+    font-family: "Playfair Display", serif;
 }
 
 .info .col {
@@ -51,8 +68,11 @@ body {
 .imagem-dois {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    align-items: center;
+    width: 100%; /* Certifique-se de que o elemento ocupa toda a largura disponível */
+    overflow: hidden; /* Esconde qualquer conteúdo que exceda a largura */
 }
+
 
 .presentes {
     margin: 3rem;
@@ -165,7 +185,24 @@ body {
     background-color: #e59400;
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+    .banner-fundo {
+        min-height: 350px; /* Altura mínima para tablets */
+    }
+
+    header h2{
+        font-size: 80px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        font-family: 'Great Vibes', cursive;
+    }
+}
 @media (max-width: 768px) {
+    header h2{
+        font-size: 80px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        font-family: 'Great Vibes', cursive;
+    }
+    
     .form-container {
         padding: 15px;
     }
@@ -192,6 +229,17 @@ body {
         font-size: 2.5em;
         text-align: center;
         padding: 1rem;
+    }
+    .banner-fundo {
+        min-height: 300px; /* Altura mínima para telas menores */
+    }
+
+    .imagem-dois {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Certifique-se de que o elemento ocupa toda a largura disponível */
+        overflow: hidden; /* Esconde qualquer conteúdo que exceda a largura */
     }
 }
 
