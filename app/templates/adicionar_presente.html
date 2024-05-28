@@ -1,0 +1,57 @@
+<!-- app/templates/adicionar_presente.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Presente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Adicionar Presente</h1>
+        <form action="{{ url_for('adicionar_presente') }}" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome do Presente</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image_file" class="form-label">Imagem</label>
+                <input type="file" class="form-control" id="image_file" name="image_file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+        </form>
+
+        <h2 class="mt-5">Presentes Adicionados</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Imagem</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for present in presentes %}
+                <tr>
+                    <td>{{ present.name }}</td>
+                    <td>{{ present.description }}</td>
+                    <td><img src="{{ url_for('static', filename='uploads/' ~ present.image_file) }}" alt="{{ present.name }}" width="100"></td>
+                    <td>
+                        <form action="{{ url_for('excluir_presente', id=present.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Meu Projeto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('presentes') }}">Presentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('presenca') }}">Confirmar Presença</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-5">
+        <h1>Lista de presentes</h1>
+        <p>Você pode contribuir com qualquer quantidade que preferir para ajudar a construir nosso sonho. Não tenha dó de usar seu pix!</p>
+        <div class="row">
+            {% for present in presentes %}
+            <div class="col-md-4 gift-item">
+                <img src="{{ url_for('static', filename='uploads/' + present.image_file) }}" alt="{{ present.name }}" class="img-fluid gift-image">
+                <p>{{ present.name }}</p>
+                <p>{{ present.description }}</p>
+                <button class="btn btn-primary btn-ajudar botao-presentes" onclick="showModal()">Ajudar</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrModalLabel">Contribuir com PIX</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="path_to_your_qr_code_image" alt="QR Code" class="img-fluid">
+                    <input type="text" id="pixKey" class="form-control mt-3" value="sua_chave_pix" readonly>
+                    <button class="btn btn-primary btn-copy mt-3 botao-presentes" onclick="copyPixKey()">Copiar chave PIX</button>
+                    <form id="contributionForm" method="POST" action="{{ url_for('contribuicoes') }}">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="nome" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" name="mensagem" placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3 botao-presentes">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showModal() {
+            $('#qrModal').modal('show');
+        }
+
+        function copyPixKey() {
+            var copyText = document.getElementById("pixKey");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            document.execCommand("copy");
+            alert("Chave PIX copiada: " + copyText.value);
+        }
+    </script>
+</body>
+</html>

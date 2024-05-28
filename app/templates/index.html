@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap" rel="stylesheet">
+    <style>
+        .navbar {
+            background: rgba(0, 0, 0, 0.5) !important;
+            color: white !important;
+            transition: all 0.5s;
+        }
+        .navbar a {
+            color: white !important;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%28255, 255, 255, 0.5%29" stroke-width="2" linecap="round" linejoin="round" d="M4 7h22M4 15h22M4 23h22"%3E%3C/path%3E%3C/svg%3E');
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                background: rgba(0, 0, 0, 0.8);
+                width: 100%;
+                text-align: center;
+            }
+            .navbar-nav .nav-item {
+                display: inline-block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nosso casamento</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('presentes') }}">Presentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('presenca') }}">Confirmar Presença</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="banner-fundo">
+            <div>
+                <h2 class="color">Otavio e Rebeca</h2>
+                <p class="color">data do casamento</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="nosso-casamento">
+            <h1>Nosso casamento</h1>
+        </div>
+        <div class="container info">
+            <div class="col">
+                <p>QUANDO</p>
+                <p>17 agosto 2024 16:00 horas</p>
+            </div>
+            <div class="col">
+                <p>ONDE</p>
+                <p>Sítio do Parceiro Sarzedo MG</p>
+            </div>
+            <div class="col">
+                <p>TRAJE</p>
+                <p>Não vá de branco</p>
+            </div>
+        </div>
+        <div>
+            <div class="container info">
+                <div class="col">
+                    <p>Nossa história</p>
+                </div>
+                <div class="col historia">
+                    <p>Não tem história fdsdafsadfasdf sdfasafasdfas asdfasdfasdfasdf asdfasdfasdfasdfsadfas sdafasdfasdfsda sdfasafasdfas asdfasdfasdfasdf asdfasdfasdfasdfsadfas sdafasdfasdfsdasdfasafasdfas asdfasdfasdfasdf asdfasdfasdfasdfsadfas sdafasdfasdfsda sdafasdfasdfsda sdafasdfasdfsda sdafasdfasdfsda</p>
+                </div>
+            </div>
+        </div>
+        <div class="imagem-dois">
+            <div>
+                <img src="{{ url_for('static', filename='img/dois.png') }}" alt="">
+            </div>
+        </div>
+
+        <div class="presentes">
+            <div class="col sobre-presentes">
+                <div class="container">
+                    <h2>lista de presentes</h2>
+                    <p class="texto-presentes">Preferimos receber os presentes através do Pix, para que possamos investir em itens que ainda precisamos juntos.</p>
+                    <a href="{{ url_for('presentes') }}"><button class="botao-presentes btn">Confira</button></a>
+                </div>
+            </div>
+            <div class="col img-presentes">
+                <img src="{{ url_for('static', filename='img/foto3.png') }}" alt="">
+            </div>
+        </div>
+        <div class="container convites">
+            <div>
+                <p class="texto-bonito">Os convites individuais serão entregues somente aos convidados que confirmarem presença.</p>
+                <a class="confirmacao" href="{{ url_for('presenca') }}"><button class="botao-presentes btn">Confirmar</button></a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('solid');
+                } else {
+                    $('.navbar').removeClass('solid');
+                }
+            });
+
+            $('.navbar-toggler').click(function() {
+                $('.navbar').toggleClass('solid');
+            });
+        });
+    </script>
+</body>
+</html>
