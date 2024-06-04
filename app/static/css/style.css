@@ -5,7 +5,8 @@ body {
 }
 
 .banner-fundo {
-    background-image: url('../img/banner.jpg');
+    /* background-image: url('../img/banner.jpg');*/
+    background-image: url('../img/slide.png');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
