@@ -2,7 +2,7 @@ import os
 
 class Config:
     # Use a variável de ambiente DATABASE_URL se estiver definida, caso contrário use o SQLite para desenvolvimento
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///site.db')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///site.db').replace("postgres://", "postgresql://", 1)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = os.path.join(os.getcwd(), 'app/static/uploads')
     MAX_CONTENT_PATH = 16 * 1024 * 1024  # 16 MB
