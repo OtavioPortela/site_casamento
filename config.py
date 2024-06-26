@@ -14,4 +14,4 @@ class ProductionConfig(Config):
     DEBUG = False
 
 # Adicione a URL do PostgreSQL diretamente aqui para garantir que está sendo usada
-os.environ['DATABASE_URL'] = 'postgres://ubksl4tqlamln4:p1c21324f05453e39b2141da690c0b6b22f4d87c6f6e3af6a5c16f4fcb87bc1f1@cd5gks8n4kb20g.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d5qaspp2blgbc0'
+os.environ['DATABASE_URL'] = 'postgresql://ubksl4tqlamln4:p1c21324f05453e39b2141da690c0b6b22f4d87c6f6e3af6a5c16f4fcb87bc1f1@cd5gks8n4kb20g.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d5qaspp2blgbc0'
