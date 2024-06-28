@@ -1,10 +1,11 @@
 import os
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'sua_chave_secreta_super_segura'
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback_secret_key')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads')
+    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER', 'uploads/')  # Adiciona esta linha
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
@@ -14,3 +15,7 @@ class ProductionConfig(Config):
 
 # Ensure the DATABASE_URL environment variable is set
 os.environ['DATABASE_URL'] = Config.SQLALCHEMY_DATABASE_URI
+
+
+
+
